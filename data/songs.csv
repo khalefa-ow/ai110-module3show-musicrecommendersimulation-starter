@@ -1,11 +1,21 @@
-id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
-1,Sunrise City,Neon Echo,pop,happy,0.82,118,0.84,0.79,0.18
-2,Midnight Coding,LoRoom,lofi,chill,0.42,78,0.56,0.62,0.71
-3,Storm Runner,Voltline,rock,intense,0.91,152,0.48,0.66,0.10
-4,Library Rain,Paper Lanterns,lofi,chill,0.35,72,0.60,0.58,0.86
-5,Gym Hero,Max Pulse,pop,intense,0.93,132,0.77,0.88,0.05
-6,Spacewalk Thoughts,Orbit Bloom,ambient,chill,0.28,60,0.65,0.41,0.92
-7,Coffee Shop Stories,Slow Stereo,jazz,relaxed,0.37,90,0.71,0.54,0.89
-8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22
-9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78
-10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35
+id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness,popularity,release_decade,mood_tags,instrumentalness,liveness
+1,Sunrise City,Neon Echo,pop,happy,0.82,118,0.84,0.79,0.18,88,2020,uplifting;sunny;carefree,0.02,0.12
+2,Midnight Coding,LoRoom,lofi,chill,0.42,78,0.56,0.62,0.71,61,2020,calm;nocturnal;cozy,0.88,0.08
+3,Storm Runner,Voltline,rock,intense,0.91,152,0.48,0.66,0.10,72,2000,aggressive;driving;rebellious,0.10,0.35
+4,Library Rain,Paper Lanterns,lofi,chill,0.35,72,0.60,0.58,0.86,55,2020,calm;rainy;cozy,0.92,0.06
+5,Gym Hero,Max Pulse,pop,intense,0.93,132,0.77,0.88,0.05,84,2010,driving;euphoric;confident,0.01,0.20
+6,Spacewalk Thoughts,Orbit Bloom,ambient,chill,0.28,60,0.65,0.41,0.92,40,2010,dreamy;calm;floating,0.95,0.05
+7,Coffee Shop Stories,Slow Stereo,jazz,relaxed,0.37,90,0.71,0.54,0.89,48,1990,cozy;warm;nostalgic,0.60,0.30
+8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22,66,2010,nocturnal;nostalgic;driving,0.70,0.10
+9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78,58,2020,calm;steady;cozy,0.90,0.07
+10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35,70,2010,uplifting;sunny;romantic,0.05,0.15
+11,Concrete Verses,MC Halcyon,hip hop,confident,0.78,95,0.62,0.86,0.12,79,2010,confident;gritty;driving,0.00,0.18
+12,Moonlit Sonata Redux,Clara Vey,classical,melancholy,0.18,66,0.30,0.20,0.97,35,1980,melancholy;dreamy;calm,0.98,0.10
+13,Iron Cathedral,Black Anvil,metal,aggressive,0.97,168,0.25,0.45,0.03,52,1990,aggressive;dark;rebellious,0.15,0.40
+14,Dusty Backroads,June Holloway,country,nostalgic,0.55,102,0.70,0.63,0.68,63,2000,nostalgic;warm;carefree,0.03,0.22
+15,Velvet Hours,Sable Rose,r&b,romantic,0.50,88,0.66,0.74,0.40,74,2010,romantic;smooth;nocturnal,0.02,0.11
+16,Pulse Reactor,DJ Kinetic,edm,euphoric,0.95,128,0.80,0.92,0.02,81,2020,euphoric;driving;uplifting,0.75,0.25
+17,Island Time,Coral Sound,reggae,relaxed,0.52,76,0.85,0.78,0.45,57,1970,carefree;sunny;warm,0.10,0.45
+18,Lantern Fields,Willow & Wren,folk,sad,0.30,84,0.28,0.40,0.93,44,2000,melancholy;nostalgic;warm,0.20,0.28
+19,Crossroads Blues,Earl Mason,blues,melancholy,0.45,92,0.35,0.52,0.75,39,1960,melancholy;gritty;nostalgic,0.25,0.55
+20,Fiesta Brillante,Los Soles,latin,happy,0.85,105,0.92,0.90,0.30,77,2020,euphoric;sunny;carefree,0.04,0.33
