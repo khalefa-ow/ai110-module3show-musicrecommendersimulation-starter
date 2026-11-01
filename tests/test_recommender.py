@@ -59,3 +59,58 @@ def test_explain_recommendation_returns_non_empty_string():
     explanation = rec.explain_recommendation(user, song)
     assert isinstance(explanation, str)
     assert explanation.strip() != ""
+
+
+# --- Tests for the functional API, modes, and diversity penalty ---
+
+from src.recommender import load_songs, recommend_songs, score_song
+
+
+def test_load_songs_converts_types():
+    songs = load_songs("data/songs.csv")
+    assert len(songs) >= 15
+    first = songs[0]
+    assert isinstance(first["energy"], float)
+    assert isinstance(first["tempo_bpm"], float)
+    assert isinstance(first["id"], int)
+    assert isinstance(first["mood_tags"], list)
+
+
+def test_score_song_returns_score_and_reasons():
+    song = {"genre": "pop", "mood": "happy", "energy": 0.8, "valence": 0.9, "acousticness": 0.2}
+    score, reasons = score_song({"genre": "pop", "mood": "happy", "energy": 0.8}, song)
+    assert score == 2.0 + 1.0 + 1.5
+    assert any("genre match" in r for r in reasons)
+    assert any("mood match" in r for r in reasons)
+
+
+def test_energy_rewards_closeness_not_magnitude():
+    prefs = {"energy": 0.4}
+    close, _ = score_song(prefs, {"genre": "x", "mood": "x", "energy": 0.45})
+    loud, _ = score_song(prefs, {"genre": "x", "mood": "x", "energy": 0.95})
+    assert close > loud
+
+
+def test_partial_genre_match_gets_half_credit():
+    score, reasons = score_song({"genre": "pop"}, {"genre": "indie pop", "mood": "x", "energy": 0.5})
+    assert score == 1.0
+    assert reasons == ["partial genre match (+1.00)"]
+
+
+def test_modes_change_rankings():
+    songs = load_songs("data/songs.csv")
+    prefs = {"genre": "pop", "mood": "happy", "energy": 0.8}
+    default = [s["title"] for s, _, _ in recommend_songs(prefs, songs, k=5)]
+    mood_first = [s["title"] for s, _, _ in recommend_songs(prefs, songs, k=5, mode="mood-first")]
+    assert default != mood_first
+
+
+def test_diversity_penalty_limits_repeat_artists():
+    songs = load_songs("data/songs.csv")
+    prefs = {"genre": "lofi", "mood": "chill", "energy": 0.4}
+    plain = recommend_songs(prefs, songs, k=3)
+    diverse = recommend_songs(prefs, songs, k=3, diversity=True)
+    plain_genres = [s["genre"] for s, _, _ in plain]
+    diverse_genres = [s["genre"] for s, _, _ in diverse]
+    assert plain_genres.count("lofi") == 3
+    assert diverse_genres.count("lofi") < 3
